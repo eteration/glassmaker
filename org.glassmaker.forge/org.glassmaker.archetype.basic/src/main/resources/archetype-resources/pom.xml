@@ -37,9 +37,9 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>org.glassmaker.spring</groupId>
+			<groupId>org.glassmaker</groupId>
 			<artifactId>org.glassmaker.spring.web</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 
 	
