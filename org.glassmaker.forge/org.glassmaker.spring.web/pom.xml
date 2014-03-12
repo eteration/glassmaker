@@ -26,7 +26,7 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>org.glassmaker.spring</groupId>
+			<groupId>org.glassmaker</groupId>
 			<artifactId>org.glassmaker.spring.oauth2</artifactId>
 			<version>${project.version}</version>
 		</dependency>
