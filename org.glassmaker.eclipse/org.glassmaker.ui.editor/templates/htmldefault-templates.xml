@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+	<template name="%Templates.text.name" 
+	    description="%Templates.text.desc"
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card" 
+	    id="org.glassmaker.ui.templates.text"  
+	    autoinsert="false" context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false" >%Templates.text.content</template>
+	
+	<template name="%Templates.textauto.name" 
+	    description="%Templates.textauto.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.textauto"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.textauto.content</template>
+	
+	<template name="%Templates.hybrid.name" 
+	    description="%Templates.hybrid.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.hybrid"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.hybrid.content</template>
+	
+	<template name="%Templates.hybridmosaic.name" 
+	    description="%Templates.hybridmosaic.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.hybridmosaic"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.hybridmosaic.content</template>
+	
+	<template name="%Templates.multipage.name" 
+	    description="%Templates.multipage.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.multipage"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.multipage.content</template>
+	
+	<template name="%Templates.simpleevent.name" 
+	    description="%Templates.simpleevent.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.simpleevent"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.simpleevent.content</template>			
+	
+	<template name="%Templates.list.name" 
+	    description="%Templates.list.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.list"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.list.content</template>
+	
+	<template name="%Templates.knowledge.name" 
+	    description="%Templates.knowledge.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.knowledge"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.knowledge.content</template>
+	
+	<template name="%Templates.knowledgemosaic.name" 
+	    description="%Templates.knowledgemosaic.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.knowledgemosaic"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.knowledgemosaic.content</template>
+	
+	<template name="%Templates.stock.name" 
+	    description="%Templates.stock.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.stock"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.stock.content</template>
+	
+	<template name="%Templates.sports.name" 
+	    description="%Templates.sports.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.sports"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.sports.content</template>
+	
+	<template name="%Templates.flight.name" 
+	    description="%Templates.flight.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.flight"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.flight.content</template>
+	
+	<template name="%Templates.movie.name" 
+	    description="%Templates.movie.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.movie"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.movie.content</template>
+	
+	<template name="%Templates.transit.name" 
+	    description="%Templates.transit.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.transit"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.transit.content</template>
+	
+	<template name="%Templates.author.name" 
+	    description="%Templates.author.desc"  
+	    contextTypeId="org.glassmaker.ui.editor.templateContextType.card"  
+	    id="org.glassmaker.ui.templates.author"  
+	    autoinsert="false" 
+	    context="org.glassmaker.ui.editor.templateContextType.card" 
+	    deleted="false">%Templates.author.content</template>
+												
+</templates>

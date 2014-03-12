@@ -1,0 +1,161 @@
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/Roboto-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    src: url('../fonts/Roboto-Thin.ttf');
+}
+
+body.full {
+    width: 640px;
+    height: 360px;
+    overflow: hidden;
+}
+
+body.small {
+    width: 256px;
+    height: 144px;
+    overflow: hidden;
+}
+
+.sourceContainer > .map-buttonbar {
+    padding-top: 0;
+    padding-bottom: 15px;
+}
+
+/* Styling for overlays (not part of the card content) */
+
+.card {
+    width: 640px;
+    height: 360px;
+    position: relative;
+    background-color: black;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+
+}
+
+.smallcard {
+    transform: scale(0.5);
+    transform-origin: left top;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: left top;
+    -ms-transform: scale(0.5);
+    -ms-transform-origin: left top;
+    -moz-transform: scale(0.5);
+    -moz-transform-origin: left top;
+    -o-transform: scale(0.5);
+    -o-transform-origin: left top;
+
+    width: 660px;
+    height: 380px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.scalable {
+    width: 640px;
+    height: 360px;
+    position: absolute;
+    background-color: black;
+    overflow: hidden;
+    transform-origin: left top;
+    -webkit-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -moz-transform-origin: left top;
+    -o-transform-origin: left top;
+}
+
+.smallcard > .card {
+    border: 10px solid;
+    border-color: #fff;
+}
+
+.smallcard > .selected {
+    border-color: #3072E1;
+}
+
+.scroll {
+    cursor: pointer;
+    height: 360px;
+    width: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -ms-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    z-index: 100;
+}
+
+body:hover .scroll {
+    opacity: 0.7;
+}
+
+.leftscroll {
+    left: 0px;
+    background-image: url('../images/page_left.svg');
+}
+
+.rightscroll {
+    left: 600px;
+    background-image: url('../images/page_right.svg');
+}
+
+*[contenteditable="true"] {
+    outline: none;
+}
+
+*[contenteditable="true"]:hover {
+    background-color: rgba(255,255,0,.3);
+    cursor: pointer;
+}
+
+*[contenteditable="true"]:focus {
+    background-color: rgba(255,255,0,.1);
+}
+
+/* Styling to put the time and brand icon in the correct place. */
+footer#map-time-footer {
+    margin-right: 40px;
+    padding-right: 0px;
+}
+
+footer#map-time-footer.has-brand-icon {
+    margin-right: 34px;
+    padding-right: 45px;
+}
+
+/*
+ * For simplicity of updating multiple elements when the user changes the icon
+ * URL, the footer brand icon element is always inserted into the generated
+ * HTML. The .has-brand-icon class on the footer element itself controls its
+ * visibility.
+ */
+img.footer-brand-icon {
+    display: none;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 0px;
+    top: 4px;
+    padding: 0;
+}
+
+footer#map-time-footer.has-brand-icon img.footer-brand-icon {
+    display: block;
+}

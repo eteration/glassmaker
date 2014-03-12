@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://updates.eteration.com/glassmaker">
+      Maven Integration for Eclipse
+   </description>
+   <feature url="features/org.glassmaker.feature_0.0.1.qualifier.jar" id="org.glassmaker.feature" version="0.0.1.qualifier">
+      <category name="Glassmaker"/>
+   </feature>
+   <category-def name="Glassmaker" label="Glassmaker Plugins for Eclipse"/>
+</site>
