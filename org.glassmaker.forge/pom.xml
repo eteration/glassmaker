@@ -1,0 +1,98 @@
+<!--
+  Copyright (c) 2014 Eteration A.S.
+  All rights reserved. This program and the accompanying materials
+  are Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.glassmaker</groupId>
+	<artifactId>org.glassmaker.forge</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Glassmaker Java Components Forge</name>
+
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<module>org.glassmaker.spring.oauth2</module>
+		<module>org.glassmaker.spring.web</module>
+		<module>org.glassmaker.archetype.basic</module>
+	</modules>
+
+
+
+	<organization>
+		<name>Eteration A.S.</name>
+		<url>http://eteration.com</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>Apache License - v2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<connection>scm:git:git@github.com:eteration/glassmaker.git</connection>
+		<developerConnection>scm:git:git@github.com:eteration/glassmaker.git</developerConnection>
+		<url>https://github.com/eteration/glassmaker</url>
+	</scm>
+
+	<issueManagement>
+		<url>https://github.com/eteration/glassmaker/issues</url>
+		<system>Github</system>
+	</issueManagement>
+
+
+	<developers>
+		<developer>
+			<id>nacidai</id>
+			<name>Naci Dai</name>
+			<organization>Eteration A.S:</organization>
+			<timezone>+2</timezone>
+		</developer>
+	</developers>
+</project>

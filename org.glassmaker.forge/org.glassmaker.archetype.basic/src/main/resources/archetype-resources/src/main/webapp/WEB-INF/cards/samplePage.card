@@ -1,0 +1,5 @@
+<article>
+  <section>
+    <p class="text-auto-size"><em class="red">${hello}</p>
+  </section>
+</article>
