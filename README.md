@@ -9,7 +9,7 @@ Glassmaker has two primary parts:
 
 The Glassmaker IDE tooling can be installed into an existing Eclipse IDE from
 
-  - http://updates.eteration.com/glassmaker
+  - http://glassmaker.org/updates/0.0.1
 
 For FAQ, and more information visit the site:
 
