@@ -32,7 +32,6 @@ package org.glassmaker.ui.editor.wizards;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.preference.PreferenceDialog;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.text.Document;
@@ -84,8 +83,6 @@ import org.eclipse.wst.sse.ui.internal.StructuredTextViewer;
 import org.eclipse.wst.sse.ui.internal.provisional.style.LineStyleProvider;
 import org.glassmaker.ui.GlassmakerUIPlugin;
 import org.glassmaker.ui.editor.CardContextType;
-
-import com.ibm.icu.impl.CalendarAstronomer.Horizon;
 
 /**
  * Templates page in new file wizard. Allows users to select a new file
