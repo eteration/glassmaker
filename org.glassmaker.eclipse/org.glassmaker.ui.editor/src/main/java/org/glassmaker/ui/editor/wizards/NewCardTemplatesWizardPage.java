@@ -32,6 +32,8 @@ package org.glassmaker.ui.editor.wizards;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.preference.PreferenceDialog;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IDocument;
@@ -70,7 +72,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.dialogs.PreferencesUtil;
@@ -83,6 +84,8 @@ import org.eclipse.wst.sse.ui.internal.StructuredTextViewer;
 import org.eclipse.wst.sse.ui.internal.provisional.style.LineStyleProvider;
 import org.glassmaker.ui.GlassmakerUIPlugin;
 import org.glassmaker.ui.editor.CardContextType;
+
+import com.ibm.icu.impl.CalendarAstronomer.Horizon;
 
 /**
  * Templates page in new file wizard. Allows users to select a new file
@@ -157,10 +160,14 @@ public class NewCardTemplatesWizardPage extends WizardPage {
 	private SourceViewer fPatternViewer;
 	/** The table presenting the templates. */
 	private TableViewer fTableViewer;
+	/** Image preview of the template */
+	private Label fImage;
 	/** Template store used by this wizard page */
 	private TemplateStore fTemplateStore;
 	/** Checkbox for using templates. */
 	private Button fUseTemplateButton;
+	
+	private ImageRegistry imageRegistry;
 
 	public NewCardTemplatesWizardPage() {
 		super("NewHTMLTemplatesWizardPage", "Card Templates", null); //$NON-NLS-1$
@@ -223,6 +230,8 @@ public class NewCardTemplatesWizardPage extends WizardPage {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 2;
 		parent.setLayout(layout);
+		
+		imageRegistry=GlassmakerUIPlugin.getDefault().getImageRegistry();
 
 		// create checkbox for user to use HTML Template
 		fUseTemplateButton = new Button(parent, SWT.CHECK);
@@ -247,6 +256,7 @@ public class NewCardTemplatesWizardPage extends WizardPage {
 
 		Label label = new Label(innerParent, SWT.NONE);
 		label.setText("Templates");
+		
 		data = new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1);
 		label.setLayoutData(data);
 
@@ -298,8 +308,8 @@ public class NewCardTemplatesWizardPage extends WizardPage {
 		});
 
 		// create viewer that displays currently selected template's contents
+		
 		fPatternViewer = doCreateViewer(parent);
-
 		fTemplateStore = GlassmakerUIPlugin.getDefault().getTemplateStore();
 		fTableViewer.setInput(fTemplateStore);
 
@@ -362,14 +372,19 @@ public class NewCardTemplatesWizardPage extends WizardPage {
 
 		Control control = viewer.getControl();
 		data = new GridData(GridData.FILL_BOTH);
-		data.horizontalSpan = 2;
+		data.horizontalSpan = 1;
+		data.verticalSpan=2;
 		data.heightHint = convertHeightInCharsToPixels(5);
 		// [261274] - source viewer was growing to fit the max line width of the template
 		data.widthHint = convertWidthInCharsToPixels(2);
 		control.setLayoutData(data);
+		
+		fImage=new Label(parent, SWT.NONE);
+		fImage.setLayoutData(data);
 
 		return viewer;
 	}
+	
 
 	/**
 	 * Enable/disable controls in page based on fUseTemplateButton's current
@@ -526,6 +541,10 @@ public class NewCardTemplatesWizardPage extends WizardPage {
 		Template template = getSelectedTemplate();
 		if (template != null) {
 			fPatternViewer.getDocument().set(template.getPattern());
+			String imageId = "org.glassmaker.ui.templates."+template.getName().replace(" ", "").toLowerCase();
+			Image i=imageRegistry.getDescriptor(imageId).createImage();
+			fImage.setImage(i);
+
 		}
 		else {
 			fPatternViewer.getDocument().set(""); //$NON-NLS-1$
