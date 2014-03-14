@@ -32,6 +32,7 @@ package org.glassmaker.ui.editor.wizards;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.preference.PreferenceDialog;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.text.Document;
@@ -539,9 +540,13 @@ public class NewCardTemplatesWizardPage extends WizardPage {
 		if (template != null) {
 			fPatternViewer.getDocument().set(template.getPattern());
 			String imageId = "org.glassmaker.ui.templates."+template.getName().replace(" ", "").toLowerCase();
-			Image i=imageRegistry.getDescriptor(imageId).createImage();
-			fImage.setImage(i);
-
+			ImageDescriptor desc = imageRegistry.getDescriptor(imageId);
+			if(desc != null){
+				fImage.setImage(desc.createImage());
+			}else{
+				fImage.setImage(null);
+			}
+				
 		}
 		else {
 			fPatternViewer.getDocument().set(""); //$NON-NLS-1$
