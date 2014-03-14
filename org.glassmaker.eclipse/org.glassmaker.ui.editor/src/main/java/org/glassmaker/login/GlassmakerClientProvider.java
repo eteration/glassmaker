@@ -47,7 +47,7 @@ public class GlassmakerClientProvider implements IClientProvider {
 	@Override
 	public String getSecret() {
 		IPreferenceStore ps = GlassmakerUIPlugin.getDefault().getPreferenceStore();	
-		return ps.getString(PreferenceConstants.CLIENT_ID);
+		return ps.getString(PreferenceConstants.CLIENT_SECRET);
 	}
 
 }
