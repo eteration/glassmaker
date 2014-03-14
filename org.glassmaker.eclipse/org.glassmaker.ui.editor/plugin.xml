@@ -20,13 +20,8 @@
    <!--====================================================-->
    <!-- Google Login -->
    <!--====================================================-->
-	<extension
-         point="com.google.gdt.eclipse.login.oauthClientProvider"
-         id="a.org.glassmaker.login.oauthclient" name="a.org.glassmaker.login.oauthclient" >
-      <oauthclientprovider 
-            id="a.org.glassmaker.login.glassmakerclient"
-            class="org.glassmaker.login.GlassmakerClientProvider">
-      </oauthclientprovider>
+	<extension point="com.google.gdt.eclipse.login.oauthClientProvider" >
+      <oauthclientprovider class="org.glassmaker.login.GlassmakerClientProvider"/>
 	</extension>
 	<extension point="com.google.gdt.eclipse.login.oauthScope">
 		<oauthScope
@@ -89,7 +84,9 @@
             class="org.glassmaker.ui.editor.wizards.ProjectWizard"
             icon="icons/glass.gif"
             id="org.glassmaker.ui.editor.wizards.GlassmakerProjectWizard"
-            name="Glassware Project">
+            name="Glassware Project"
+            preferredPerspectives="org.eclipse.jdt.ui.JavaPerspective"
+            project="true">
       </wizard>
    </extension>
    
@@ -141,5 +138,52 @@
 	          class="org.glassmaker.ui.editor.preferences.PreferenceInitializer">
 	    </initializer>
 	 </extension>    
+
+
+   <!--====================================================-->
+   <!-- Perspective Extensions -->
+   <!--====================================================-->
+
+	 
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <newWizardShortcut
+               id="org.glassmaker.ui.editor.wizards.GlassmakerProjectWizard">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="org.glassmaker.ui.editor.wizards.CardWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaBrowsingPerspective">
+         <newWizardShortcut
+               id="org.glassmaker.ui.editor.wizards.GlassmakerProjectWizard">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="org.glassmaker.ui.editor.wizards.CardWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaHierarchyPerspective">
+         <newWizardShortcut
+               id="org.glassmaker.ui.editor.wizards.GlassmakerProjectWizard">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="org.glassmaker.ui.editor.wizards.CardWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jst.j2ee.J2EEPerspective">
+         <newWizardShortcut
+               id="org.glassmaker.ui.editor.wizards.GlassmakerProjectWizard">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="org.glassmaker.ui.editor.wizards.CardWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+	 
 				  
 </plugin>
