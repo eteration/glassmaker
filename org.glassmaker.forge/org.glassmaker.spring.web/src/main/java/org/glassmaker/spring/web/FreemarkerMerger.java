@@ -49,11 +49,11 @@ public class FreemarkerMerger implements TemplateMerger, InitializingBean {
 	
 
 
-	@Value("${freemarkerpath:'/WEB-INF/cards'}")
+	@Value("${freemarkerpath:/WEB-INF/cards}")
 	private String freemarkerpath;
 
 	
-	@Value("${cardextension:'.card'}")
+	@Value("${cardextension:.card}")
 	private String cardextension;
 	
 
