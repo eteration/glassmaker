@@ -33,6 +33,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +66,7 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
+import org.glassmaker.login.GlassmakerClientProvider;
 import org.glassmaker.ui.CardUtil;
 import org.glassmaker.ui.GlassmakerUIPlugin;
 
@@ -74,6 +76,7 @@ import com.google.api.client.json.jackson.JacksonFactory;
 import com.google.api.services.mirror.Mirror;
 import com.google.api.services.mirror.model.TimelineItem;
 import com.google.gdt.eclipse.login.GoogleLogin;
+
 
 /**
  * Multi-page editor to create Card templates. This example has 3 pages:
@@ -147,10 +150,10 @@ public class CardEditor extends MultiPageEditorPart implements IResourceChangeLi
 
 		previewOnGlass.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent event) {
-				if (!GoogleLogin.getInstance().isLoggedIn()) {
+				if(!setClientprovider()) {
 					GoogleLogin.promptToLogIn("Glassmaker");
 				}			
-				if (GoogleLogin.getInstance().isLoggedIn()) 
+				if (GoogleLogin.getInstance().isLoggedIn())
 					previewOnGlass();
 			}
 		});
@@ -342,6 +345,25 @@ public class CardEditor extends MultiPageEditorPart implements IResourceChangeLi
 		} catch (Exception e) {
 			GlassmakerUIPlugin.logError(e.getMessage(), e);
 		}
+	}
+
+	private boolean setClientprovider() {
+		GlassmakerClientProvider cp = new GlassmakerClientProvider();
+		if(!GoogleLogin.getInstance().fetchOAuth2ClientId().equals(cp.getId())){
+			try {
+				Field csecret = GoogleLogin.class.getDeclaredField("clientSecret");
+				Field cclientid= GoogleLogin.class.getDeclaredField("clientId");
+				csecret.setAccessible(true);
+				cclientid.setAccessible(true);
+				csecret.set(GoogleLogin.getInstance(), cp.getSecret());
+				cclientid.set(GoogleLogin.getInstance(), cp.getId());
+				if(GoogleLogin.getInstance().isLoggedIn())
+					GoogleLogin.getInstance().logOut(false);
+			} catch (Exception e) {
+				GlassmakerUIPlugin.logError("Failed to set client provider",e);
+			}
+		}
+		return GoogleLogin.getInstance().isLoggedIn();
 	}
 
 }

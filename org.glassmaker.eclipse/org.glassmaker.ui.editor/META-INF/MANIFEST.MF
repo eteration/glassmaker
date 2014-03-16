@@ -21,9 +21,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.wst.common.emf,
  org.eclipse.wst.common.emfworkbench.integration;bundle-version="1.2.101",
  org.eclipse.wst.html.ui,
- com.google.gdt.eclipse.login;bundle-version="3.5.1";resolution:=optional
+ com.google.gdt.eclipse.login;bundle-version="3.5.1";resolution:=optional,
+ com.google.gdt.eclipse.suite;bundle-version="3.5.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Eclipse-BundleShape: dir
 Bundle-ClassPath: libs/google-api-services-mirror-v1-rev40-1.16.0-rc.jar,
  libs/google-api-client-1.16.0-rc.jar,
  .
