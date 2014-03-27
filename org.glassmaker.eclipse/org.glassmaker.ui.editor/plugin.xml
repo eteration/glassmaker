@@ -77,7 +77,10 @@
             icon="icons/glass.gif"
             category="org.glassmaker.ui.editor"
             class="org.glassmaker.ui.editor.wizards.NewCardWizard"
+            finalPerspective="org.eclipse.jst.j2ee.J2EEPerspective"
             id="org.glassmaker.ui.editor.wizards.CardWizard">
+             <selection
+               class="org.eclipse.core.resources.IResource" />
       </wizard>
       <wizard
             category="org.glassmaker.ui.editor"
@@ -85,8 +88,10 @@
             icon="icons/glass.gif"
             id="org.glassmaker.ui.editor.wizards.GlassmakerProjectWizard"
             name="Glassware Project"
-            preferredPerspectives="org.eclipse.jdt.ui.JavaPerspective"
+            finalPerspective="org.eclipse.jst.j2ee.J2EEPerspective"
             project="true">
+             <selection
+               class="org.eclipse.core.resources.IResource" />
       </wizard>
    </extension>
    
@@ -185,5 +190,37 @@
       </perspectiveExtension>
    </extension>
 	 
-				  
+	<!-- Add new Card wizard to Project Explorer -->
+	<extension
+		id="org.glassmaker.ui.commonWizard.new.card"
+		point="org.eclipse.ui.navigator.navigatorContent">
+		<commonWizard
+        menuGroupId="org.eclipse.wst.web.ui"
+        type="new"
+        wizardId="org.glassmaker.ui.editor.wizards.CardWizard">
+			<enablement>
+				<or>
+					<adapt type="org.eclipse.core.resources.IResource">
+						<test
+							property="org.eclipse.wst.common.project.facet.core.projectFacet"
+							value="jst.web"/>
+					</adapt>
+				</or>
+			</enablement>
+		</commonWizard>
+		<commonWizard
+        menuGroupId="org.eclipse.wst.web.ui"
+        type="new"
+        wizardId="org.glassmaker.ui.editor.wizards.GlassmakerProjectWizard">
+			<enablement>
+				<or>
+					<adapt type="org.eclipse.core.resources.IResource">
+						<test
+							property="org.eclipse.wst.common.project.facet.core.projectFacet"
+							value="jst.web"/>
+					</adapt>
+				</or>
+			</enablement>
+		</commonWizard>
+	</extension>				  
 </plugin>

@@ -35,10 +35,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Tool;
-import org.eclipse.gef.internal.ui.palette.editparts.ToolEntryEditPart;
 import org.eclipse.gef.palette.PaletteDrawer;
-import org.eclipse.gef.palette.PaletteListener;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.ui.palette.PaletteViewer;
@@ -99,44 +99,45 @@ public class PaletteView extends ViewPart {
 		
 		viewer.setPaletteRoot(root);
 		
-		viewer.addPaletteListener(new PaletteListener(){
-			public void activeToolChanged(PaletteViewer palette, ToolEntry tool){
-				Object obj = palette.getEditPartRegistry().get(tool);
-				if(!(obj instanceof ToolEntryEditPart)){
-					return;
-				}
-				ToolEntryEditPart part = (ToolEntryEditPart)obj;
-				if(part!=null){
-					// get the active editor
-					IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(); 
-					IEditorPart editorPart = page.getActiveEditor();
-					// execute processing of the palette item
-					if(editorPart!=null){
-						if(editorPart instanceof CardEditor){
-							IPaletteItem item = (IPaletteItem)tools.get(tool);
-							item.execute((CardEditor)editorPart);
-						}
-						else if(editorPart instanceof IPaletteTarget){
-							IPaletteItem item = (IPaletteItem)tools.get(tool);
-							item.execute(((IPaletteTarget)editorPart).getPaletteTarget());
-						}
-					}
-					// unset palette selection
-					part.setToolSelected(false);
-				}
-			}
-		});
 		viewer.getControl().addMouseListener(new MouseAdapter(){
-			public void mouseUp(MouseEvent e) {
-				// set focus to the active editor
-				IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(); 
-				IEditorPart editorPart = page.getActiveEditor();
-				if(editorPart!=null){
-					editorPart.setFocus();
+			@Override
+			public void mouseDoubleClick(MouseEvent e) {
+
+//				IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(); 
+//				IEditorPart editorPart = page.getActiveEditor();
+//				if(editorPart!=null){
+//					editorPart.setFocus();
+//				}
+				if (e.button == 1) {
+					EditPart part = PaletteView.this.viewer.findObjectAt(new Point(e.x, e.y));
+					IPaletteItem item = null;
+					if (part != null) {
+						if (part.getModel() instanceof HTMLPaletteEntry)
+							item = tools.get(part.getModel());
+					}
+					if (item != null)
+						insert(item);
 				}
+				
 			}
 		});
 	
+	}
+	
+	private void insert(IPaletteItem item) {
+		if(item == null)
+			return;
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(); 
+		IEditorPart editorPart = page.getActiveEditor();
+		// execute processing of the palette item
+		if(editorPart!=null){
+			if(editorPart instanceof CardEditor){
+				item.execute((CardEditor)editorPart);
+			}
+			else if(editorPart instanceof IPaletteTarget){
+				item.execute(((IPaletteTarget)editorPart).getPaletteTarget());
+			}
+		}
 	}
 	
 	/**
