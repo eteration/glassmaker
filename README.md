@@ -11,6 +11,7 @@ The Glassmaker IDE tooling can be installed into an existing Eclipse IDE from
 
   - http://glassmaker.org/updates/0.0.1
   - IMPORTANT: Glassmaker requires Google Plugins for Eclipse (GPE). Please install them prior to installing glassmaker from https://developers.google.com/eclipse/docs/getting_started
+  - A short video demo for installation steps is available at: http://youtu.be/J_WXaQAcowg
 
 For FAQ, and more information visit the site:
 
