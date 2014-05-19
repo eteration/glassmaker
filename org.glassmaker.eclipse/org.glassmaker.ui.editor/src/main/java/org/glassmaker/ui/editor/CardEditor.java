@@ -49,9 +49,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowData;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -123,30 +122,26 @@ public class CardEditor extends MultiPageEditorPart implements IResourceChangeLi
 	 */
 	void createPage1() {
 		Composite composite = new Composite(getContainer(), SWT.NONE);
-		FillLayout layout = new FillLayout();
+		
+		RowLayout layout = new RowLayout();
+		layout.wrap = false;
+		layout.pack = true;
+		layout.justify = true;
+		layout.type = SWT.VERTICAL;
+		layout.marginLeft = 5;
+		layout.marginTop = 5;
+		layout.marginRight = 5;
+		layout.marginBottom = 5;
+		layout.spacing = 0;
 		composite.setLayout(layout);
-		browser = new Browser(composite, SWT.H_SCROLL | SWT.V_SCROLL);
+		
+		browser = new Browser(composite, SWT.NONE);
+		browser.setLayoutData(new RowData(640, 360));
 
-		int index = addPage(composite);
-		setPageText(index, "Preview");
-	}
-
-	/**
-	 * Creates page 1 of the multi-page editor, which allows you to change the
-	 * font used in page 2.
-	 */
-	void createPage2() {
-
-		Composite composite = new Composite(getContainer(), SWT.NONE);
-		GridLayout layout = new GridLayout();
-		composite.setLayout(layout);
-		layout.numColumns = 2;
-
+	
 		Button previewOnGlass = new Button(composite, SWT.NONE);
-		GridData gd = new GridData(GridData.BEGINNING);
-		gd.horizontalSpan = 2;
-		previewOnGlass.setLayoutData(gd);
-		previewOnGlass.setText("Preview on glass...");
+		previewOnGlass.setText("#throughglass﻿");
+
 
 		previewOnGlass.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent event) {
@@ -159,7 +154,8 @@ public class CardEditor extends MultiPageEditorPart implements IResourceChangeLi
 		});
 
 		int index = addPage(composite);
-		setPageText(index, "Glass");
+		setPageText(index, "Preview");
+		
 	}
 
 	
@@ -169,7 +165,6 @@ public class CardEditor extends MultiPageEditorPart implements IResourceChangeLi
 	protected void createPages() {
 		createPage0();
 		createPage1();
-		createPage2();
 	}
 
 	/**
